@@ -13,8 +13,8 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
 const corsOptions = {
-   origin: false,
-   credentials: false
+   origin: true,
+   credentials: true
 }
 
 mongoose.set("strictQuery", false)
