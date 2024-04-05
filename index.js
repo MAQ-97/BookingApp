@@ -34,6 +34,13 @@ const connect = async() => {
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(cookieParser())
+
+
+app.listen(port, () => {
+   connect()
+   console.log('server listening on port', port)
+})
+
 app.get('/', (req, res) => {
    res.send('This is my API route..... ')
 })
@@ -42,10 +49,5 @@ app.use("/api/v1/tours", tourRoute)
 app.use("/api/v1/users", userRoute)
 app.use("/api/v1/review", reviewRoute)
 app.use("/api/v1/booking", bookingRoute)
-
-app.listen(port, () => {
-   connect()
-   console.log('server listening on port', port)
-})
 // Export the Express API
 module.exports = app
