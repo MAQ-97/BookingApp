@@ -50,4 +50,3 @@ app.use("/api/v1/users", userRoute)
 app.use("/api/v1/review", reviewRoute)
 app.use("/api/v1/booking", bookingRoute)
 // Export the Express API
-module.exports = app
