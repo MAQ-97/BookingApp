@@ -11,6 +11,7 @@ export const createTour = async (req, res) => {
    } catch (error) {
       res.status(500).json({ success: true, message: 'Failed to create. Try again!' })
    }
+   return;
 }
 
 //Update Tour
@@ -26,6 +27,7 @@ export const updateTour = async (req, res) => {
    } catch (error) {
       res.status(500).json({ success: false, message: 'Failed to update' })
    }
+   return;
 }
 
 //Delete Tour
@@ -39,6 +41,7 @@ export const deleteTour = async (req, res) => {
    } catch (error) {
       res.status(500).json({ success: false, message: 'Failed to delete' })
    }
+   return;
 }
 
 //Getsingle Tour
@@ -52,6 +55,7 @@ export const getSingleTour = async (req, res) => {
    } catch (error) {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
+   return;
 }
 
 //Get All Tour
@@ -68,13 +72,14 @@ export const getAllTour = async (req, res) => {
    } catch (error) {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
+   return;
 }
 
 
 // Get tour by search
 export const getTourBySearch = async (req, res) => {
 
-   // hear 'i' means case sensitive 
+   // hear 'i' means case sensitive
    const city = new RegExp(req.query.city, 'i')
    const distance = parseInt(req.query.distance)
    const maxGroupSize = parseInt(req.query.maxGroupSize)
@@ -87,12 +92,12 @@ export const getTourBySearch = async (req, res) => {
    } catch (error) {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
+   return;
 }
 
 //Get featured Tour
 export const getFeaturedTour = async (req, res) => {
    //console.log(page)
-
    try {
       const tours = await Tour.find({ featured: true }).populate('reviews').limit(8)
 
@@ -100,9 +105,10 @@ export const getFeaturedTour = async (req, res) => {
    } catch (error) {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
+   return;
 }
 
-//Get tour count 
+//Get tour count
 export const getTourCount = async(req,res) => {
    try {
       const tourCount = await Tour.estimatedDocumentCount()
@@ -111,4 +117,5 @@ export const getTourCount = async(req,res) => {
    } catch (error) {
       res.status(500).json({success:false, message: "Failed to fetch"})
    }
+   return;
 }

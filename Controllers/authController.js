@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 // user register
 export const register = async (req, res) => {
    try {
+
       //hashing password
       const salt = bcrypt.genSaltSync(10)
       const hash = bcrypt.hashSync(req.body.password, salt)
@@ -22,6 +23,7 @@ export const register = async (req, res) => {
    } catch (error) {
       res.status(500).json({ success: false, message: "Failed to create! Try again." })
    }
+   return;
 }
 
 // user login
@@ -38,7 +40,7 @@ export const login = async (req, res) => {
       // if user is exist then check the passord or compare the password
       const checkCorrectPassword = await bcrypt.compare(req.body.password, user.password)
 
-      // if password incorrect 
+      // if password incorrect
       if (!checkCorrectPassword) {
          return res.status(401).json({ susccess: false, message: "Incorrect email or password!" })
       }
@@ -56,4 +58,5 @@ export const login = async (req, res) => {
    } catch (error) {
       res.status(500).json({ susccess: false, message: "Failed to login" })
    }
+   return;
 }

@@ -11,6 +11,7 @@ export const createUser = async (req, res) => {
    } catch (error) {
       res.status(500).json({ success: true, message: 'Failed to create. Try again!' })
    }
+   return;
 }
 
 //Update User
@@ -26,6 +27,7 @@ export const updateUser = async (req, res) => {
    } catch (error) {
       res.status(500).json({ success: false, message: 'Failed to update' })
    }
+   return;
 }
 
 //Delete User
@@ -39,12 +41,12 @@ export const deleteUser = async (req, res) => {
    } catch (error) {
       res.status(500).json({ success: false, message: 'Failed to delete' })
    }
+   return;
 }
 
 //Get single User
 export const getSingleUser = async (req, res) => {
    const id = req.params.id
-
    try {
       const user = await User.findById(id)
 
@@ -52,12 +54,12 @@ export const getSingleUser = async (req, res) => {
    } catch (error) {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
+   return;
 }
 
 //GetAll User
 export const getAllUser = async (req, res) => {
    //console.log(page)
-
    try {
       const users = await User.find({})
 
@@ -65,4 +67,5 @@ export const getAllUser = async (req, res) => {
    } catch (error) {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
+   return;
 }
